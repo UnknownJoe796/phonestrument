@@ -197,6 +197,25 @@ data class Scale(val scale: List<Int>, val base: Int = Notes.c4) {
         Scales.naturalMinor, Scales.harmonicMinor, Scales.melodicMinorDown, Scales.melodicMinorUp -> Scale(Scales.major, base + 3)
         else -> this
     }
+
+    operator fun get(index:Int) = scale[index modulus scale.size] + base + (index / scale.size * 12)
+    operator fun contains(note: Int): Boolean = note.minus(base).modulus(12) in scale
+    fun isImportant(note: Int):Boolean = when(scale.indexOf(note.minus(base).modulus(12))){
+        0, 2, 4 -> true
+        else -> false
+    }
+
+    override fun toString(): String {
+        return Notes.letter(base) + when(scale){
+            Scales.major -> ""
+            Scales.melodicMinorDown, Scales.melodicMinorUp, Scales.naturalMinor, Scales.harmonicMinor -> "m"
+            Scales.blues -> "L"
+            Scales.chromatic -> "C"
+            Scales.dorian -> "D"
+            Scales.mixolydian -> "M"
+            else -> "?"
+        }
+    }
 }
 
 object Chords {

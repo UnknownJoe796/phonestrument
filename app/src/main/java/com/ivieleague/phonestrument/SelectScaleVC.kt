@@ -25,7 +25,7 @@ class SelectScaleVC(val scale: Scale, val onComplete: (Scale?) -> Unit) : AnkoVi
                 showBack = true,
                 onBackPressed = { onComplete.invoke(null) },
                 buttons = {
-                    layoutSaveButton { onComplete.invoke(Scale(scaleObs.value, baseObs.value)) }
+                    layoutSaveButton { onComplete.invoke(Scale(scaleObs.value, baseObs.value + Notes.c4)) }
                 }
         ).lparams(matchParent, wrapContent)
 
@@ -49,7 +49,7 @@ class SelectScaleVC(val scale: Scale, val onComplete: (Scale?) -> Unit) : AnkoVi
 
                 layoutField(resources.getString(R.string.base_note)) {
                     spinner {
-                        adapter = standardAdapter((Notes.c4..Notes.b4).toList(), baseObs) { itemObs ->
+                        adapter = standardAdapter((Notes.c0..Notes.b0).toList(), baseObs) { itemObs ->
                             textView {
                                 styleDefault()
                                 padding = dip(8)
@@ -70,8 +70,8 @@ class SelectScaleVC(val scale: Scale, val onComplete: (Scale?) -> Unit) : AnkoVi
                         setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY)
 
                         setOnClickListener {
-                            val new = Scale(scaleObs.value, baseObs.value).previous()
-                            baseObs.value = new.base
+                            val new = Scale(scaleObs.value, baseObs.value + Notes.c3).previous()
+                            baseObs.value = new.base % 12
                             scaleObs.value = new.scale
                         }
                     }.lparams(dip(32), dip(32)){ margin = dip(8) }
@@ -79,12 +79,12 @@ class SelectScaleVC(val scale: Scale, val onComplete: (Scale?) -> Unit) : AnkoVi
                     imageButton {
                         padding = dip(4)
                         backgroundResource = selectableItemBackgroundBorderlessResource
-                        imageResource = R.drawable.ic_navigate_before
+                        imageResource = R.drawable.ic_navigate_next
                         setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY)
 
                         setOnClickListener {
-                            val new = Scale(scaleObs.value, baseObs.value).next()
-                            baseObs.value = new.base
+                            val new = Scale(scaleObs.value, baseObs.value + Notes.c3).next()
+                            baseObs.value = new.base % 12
                             scaleObs.value = new.scale
                         }
                     }.lparams(dip(32), dip(32)){ margin = dip(8) }

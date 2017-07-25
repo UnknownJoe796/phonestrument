@@ -2,7 +2,7 @@ package com.ivieleague.phonestrument
 
 import org.billthefarmer.mididriver.MidiDriver
 
-fun MidiDriver.setInstrument(channel:Int, instrument:Int) = write(byteArrayOf((0xB0 + channel).toByte(), instrument.toByte()))
+fun MidiDriver.setInstrument(channel:Int, instrument:Int) = write(byteArrayOf((0xC0 + channel).toByte(), instrument.toByte()))
 fun MidiDriver.noteOn(channel:Int = 0, note:Int, velocity:Float) = write(byteArrayOf((0x90 + channel).toByte(), note.toByte(), velocity.times(63).toByte()))
 fun MidiDriver.noteOff(channel:Int = 0, note:Int, velocity:Float) = write(byteArrayOf((0x80 + channel).toByte(), note.toByte(), velocity.times(63).toByte()))
 fun MidiDriver.polyphonicPressure(channel:Int = 0, note:Int, pressure:Float) = write(byteArrayOf((0xA0 + channel).toByte(), note.toByte(), pressure.times(63).toByte()))
