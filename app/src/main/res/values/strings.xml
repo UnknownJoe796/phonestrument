@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Phonestrument</string>
+
+    <string name="chromatic">Chromatic</string>
+    <string name="major">Major</string>
+    <string name="natural_minor">Natural Minor</string>
+    <string name="harmonic_minor">Harmonic Minor</string>
+    <string name="melodic_minor_up">Melodic Minor Up</string>
+    <string name="melodic_minor_down">Melodic Minor Down</string>
+    <string name="dorian">Dorian</string>
+    <string name="mixolydian">Mixolydian</string>
+    <string name="blues">Blues</string>
+    <string name="scale_type">Scale Type</string>
+    <string name="base_note">Base Note</string>
+    <string name="back">Back</string>
+    <string name="save">Save</string>
+    <string name="select_scale">Select Scale</string>
+    <string name="select_chord">Select Chord</string>
+    <string name="base_chord">Base Chord</string>
+    <string name="result">Result</string>
+    <string name="seven">7</string>
+    <string name="sus_4">Sus4</string>
+    <string name="select_instrument">Select Instrument</string>
+    <string name="instrument_number">Instrument Number</string>
+</resources>
